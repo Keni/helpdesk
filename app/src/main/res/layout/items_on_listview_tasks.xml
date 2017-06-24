@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:descendantFocusability="beforeDescendants">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/card_background_selector"
+        android:descendantFocusability="afterDescendants"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:text="@string/statusNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:textColor="@android:color/white"
+            android:background="@android:color/holo_green_dark"
+            android:visibility="gone"
+            android:id="@+id/textViewStatus" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/stat_sys_warning"
+            android:layout_alignParentLeft="true"
+            android:tint="@android:color/holo_red_dark"
+            android:layout_marginRight="5dp"
+            android:visibility="gone"
+            android:id="@+id/imageViewPriority"
+            android:contentDescription="@string/highPriority" />
+
+        <TextView
+            android:textColor="@android:color/black"
+            android:layout_width="200dp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/imageViewPriority"
+            android:layout_below="@id/textViewStatus"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:id="@+id/textViewObj" />
+
+        <TextView
+            android:textColor="@color/colorDateText"
+            android:gravity="end"
+            android:textSize="12sp"
+            android:layout_below="@id/textViewStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewDate"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:textColor="@android:color/black"
+            android:layout_width="match_parent"
+            android:id="@+id/textViewReason"
+            android:paddingTop="10dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_below="@+id/textViewObj"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_access_time_black_18dp"
+            android:layout_alignParentRight="true"
+            android:tint="@android:color/holo_red_light"
+            android:visibility="gone"
+            android:layout_below="@id/textViewDate"
+            android:id="@+id/imageViewTime"
+            android:contentDescription="@string/deadLine" />
+
+    </RelativeLayout>
+
+</FrameLayout>

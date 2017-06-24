@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">Сибирский Паритет</string>
+    <string name="sibparitet">Сибирский Паритет</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="entry">Вход</string>
+    <string name="allTasks">Список заявок</string>
+    <string name="myTasks">Мои задачи</string>
+    <string name="workTasks">В работе</string>
+    <string name="confirmationTasks">На подтверждение</string>
+    <string name="navigation_drawer_open">Открыть меню</string>
+    <string name="navigation_drawer_close">Закрыть меню</string>
+    <string name="taskID">Обращение #</string>
+    <string name="solution">Тип работы</string>
+    <string name="user">Пользователь</string>
+    <string name="commentTitle">Коментарий к обращению</string>
+    <string name="commentHint">Текст комментария</string>
+    <string name="transferTitle">Смена исполнителя обращения</string>
+    <string name="transferHint">Причина смены исполнителя</string>
+    <string name="reportAdd">Добавление наряда</string>
+    <string name="buttonAdd">Добавить</string>
+    <string name="reportEdit">Редактирование наряда</string>
+    <string name="delete">Удаление</string>
+    <string name="deleted">Удалить</string>
+    <string name="filter">Фильтр</string>
+    <string name="filterTitle">Фильтр заявок</string>
+    <string name="all">Все</string>
+    <string name="deleteMessage">Вы уверены?</string>
+    <string name="buttonAccept">Применить</string>
+    <string name="buttonAppoint">Назначить</string>
+    <string name="buttonCancel">Отмена</string>
+    <string name="buttonYes">Да</string>
+    <string name="buttonNo">Нет</string>
+    <string name="performer">* Исполнитель:</string>
+    <string name="decision">Решение:</string>
+    <string name="dt0">* Дата начала:</string>
+    <string name="dt1">Дата окончания:</string>
+    <string name="act">По акту:</string>
+    <string name="comment">Комментарий:</string>
+    <string name="addSolution">* Тип работы:</string>
+    <string name="addTask">Добавление обращения</string>
+    <string name="errorEmptyField">Поле не заполнено!</string>
+    <string name="errorEmptyFieldToast">Не все поля заполнены!</string>
+    <string name="errorTransferOnMe">Выбраный пользователь уже является исполнителем!</string>
+    <string name="errorTime">Нельзя выбрать прошедшее время</string>
+    <string name="errorTimeReport">Время окончание не может быть раньше времени начала</string>
+    <string name="loading">Загрузка</string>
+    <string name="wait">Подождите…</string>
+    <string name="report">Наряд</string>
+    <string name="showText">показать весь текст…</string>
+    <string name="high">Высокий</string>
+    <string name="highPriority">Высокий приоритет</string>
+    <string name="notSelected">Не выбран</string>
+    <string name="selectObj">Выбор объекта</string>
+    <string name="selectTime">Выберите время</string>
+    <string name="select">Выберайте</string>
+    <string name="errorMySQL">Сервер недоступен</string>
+    <string name="addTaskObject">* Объект:</string>
+    <string name="addTaskReason">* Причина…</string>
+    <string name="addTaskPriority">* Приоритет:</string>
+    <string name="addTaskDeadLine">* Крайний срок:</string>
+    <string name="filterTaskObject">Объект:</string>
+    <string name="filterTaskPerformer">Исполнитель:</string>
+    <string name="filterTaskPriority">Приоритет:</string>
+    <string name="filterTaskStatus">Статус:</string>
+    <string name="filterTaskDate">Период:</string>
+    <string name="filterTaskStartDate">Дата начала</string>
+    <string name="filterTaskFinishDate">Дата окончания</string>
+    <string name="filterTaskSort">Сортировка:</string>
+    <string name="hintSelectDate">Выберите дату</string>
+    <string name="hintSelectTime">и время</string>
+    <string name="hintComment">Комментарий…</string>
+    <string name="menu">Меню</string>
+    <string name="statusNew"> Новая  </string>
+    <string name="deadLine">Крайний срок</string>
+    <string name="priority">Приоритет</string>
+    <string name="status">Статус</string>
+    <string name="startTask">Начать работу</string>
+    <string name="pauseTask">Приостановить работу</string>
+    <string name="finishTask">Завершить обращение</string>
+    <string name="addReport">Добавить наряд</string>
+    <string name="addComment">Добавить комментарий</string>
+    <string name="transferTask">Смена исполнителя</string>
+    <string name="byAct">По акту</string>
+    <string name="justComment">Комментарий</string>
+    <string name="exit">Выход</string>
+    <string name="exitMessage">Вы уверен что хотите выйти?</string>
+    <string name="renewTitle">Возобновление обращения</string>
+    <string name="renew">Возобновить обращение</string>
+    <string name="renewTextViewComment">* Причина возобновления…</string>
+    <string name="renewTextViewDeadLine">* Крайний срок:</string>
+    <string name="finish">Завершено</string>
+    <string name="accept">Принято</string>
+    <string name="stopReport">Остановить наряд</string>
+    <string name="saveReport">Сохранить</string>
+    <string name="push">Уведомления</string>
+    <string name="errorNetwork">Ошибка сети</string>
+
+    <string-array name="sort">
+        <item>Дата изменения</item>
+        <item>Дата изменения (Обр. порядок)</item>
+        <item>Дата создания</item>
+        <item>Дата создания (Обр. порядок)</item>
+        <item>Крайний срок</item>
+        <item>Крайний срок (Обр. порядок)</item>
+        <item>Дата Завершения</item>
+        <item>Дата Завершения (Обр. порядок)</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/list_all_tasks"
+            android:checked="false"
+            android:title="@string/allTasks" />
+
+        <item
+            android:id="@+id/list_my_tasks"
+            android:checked="true"
+            android:title="@string/myTasks" />
+
+        <item
+            android:id="@+id/list_in_work_tasks"
+            android:checked="false"
+            android:title="@string/workTasks" />
+
+        <item
+            android:id="@+id/list_confirmation_tasks"
+            android:checked="false"
+            android:title="@string/confirmationTasks" />
+
+    </group>
+
+    <group android:id="@+id/nav_footer">
+    <item
+        android:id="@+id/exit"
+        android:title="@string/exit" />
+
+    </group>
+
+</menu>

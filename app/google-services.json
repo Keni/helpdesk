@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "669115664521",
+    "firebase_url": "https://paritet-8e266.firebaseio.com",
+    "project_id": "paritet-8e266",
+    "storage_bucket": "paritet-8e266.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669115664521:android:27abbbf6df942258",
+        "android_client_info": {
+          "package_name": "keni.paritet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669115664521-du6navqppcp1tro9ubqe616qff8b84ee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpiVFnf0rFrl4bPMxM9GJ1dE3Klw6WN-U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
