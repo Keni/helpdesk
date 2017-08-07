@@ -1,8 +1,11 @@
 package keni.paritet.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
@@ -30,6 +33,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
+import keni.paritet.ActionsTask.TasksFilter;
 import keni.paritet.ActionsTaskDialog.FilterDialog;
 import keni.paritet.Activitys.TaskInfoActivity;
 import keni.paritet.Config.Config;
@@ -46,7 +50,7 @@ public class AllTasksFragment extends android.support.v4.app.Fragment implements
 
     private String JSON_STRING;
 
-    private SwipeRefreshLayout swipeRefreshLayout;
+    public static SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -59,6 +63,7 @@ public class AllTasksFragment extends android.support.v4.app.Fragment implements
     {
         super.onActivityCreated(savedInstanceState);
         setHasOptionsMenu(true);
+        getActivity().setTitle(R.string.allTasks);
 
         list_all_tasks = (ListView) getActivity().findViewById(R.id.listview);
         list_all_tasks.setOnItemClickListener(this);
@@ -72,8 +77,7 @@ public class AllTasksFragment extends android.support.v4.app.Fragment implements
             @Override
             public void run()
             {
-                swipeRefreshLayout.setRefreshing(true);
-                getJSON();
+                checkFilter();
             }
         });
     }
@@ -81,13 +85,13 @@ public class AllTasksFragment extends android.support.v4.app.Fragment implements
     @Override
     public void onRefresh()
     {
-        getJSON();
+        checkFilter();
     }
 
     private void showInfoTask()
     {
         JSONObject jsonObject;
-        final ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+        final ArrayList<HashMap<String, String>> list = new ArrayList<>();
 
         try
         {
@@ -173,6 +177,12 @@ public class AllTasksFragment extends android.support.v4.app.Fragment implements
 
                 if (list.get(position).get(Config.TASK_STATUS).equals("1"))
                     textViewStatus.setVisibility(View.VISIBLE);
+                else if (list.get(position).get(Config.TASK_STATUS).equals("3"))
+                {
+                    textViewStatus.setVisibility(View.VISIBLE);
+                    textViewStatus.setText(R.string.statusInWork);
+                    textViewStatus.setBackgroundColor(getResources().getColor(R.color.colorStatusInWork));
+                }
                 else
                     textViewStatus.setVisibility(View.GONE);
 
@@ -228,6 +238,34 @@ public class AllTasksFragment extends android.support.v4.app.Fragment implements
         intent.putExtra(Config.TASK_APP_ID, addId);
         startActivity(intent);
     }
+
+    private void checkFilter()
+    {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Config.SHARED_PREF_FILTER, Context.MODE_PRIVATE);
+
+        boolean filtered = sharedPreferences.getBoolean(Config.FILTERED, false);
+
+        if (filtered)
+        {
+            String filtered_performer = sharedPreferences.getString(Config.FILTERED_PERFORMER, "");
+            String filtered_object = sharedPreferences.getString(Config.FILTERED_OBJECT, "");
+            String filtered_priority = sharedPreferences.getString(Config.FILTERED_PRIORITY, "");
+            String filtered_status = sharedPreferences.getString(Config.FILTERED_STATUS, "");
+            String filtered_dt0 = sharedPreferences.getString(Config.FILTERED_DT0, "");
+            String filtered_dt1 = sharedPreferences.getString(Config.FILTERED_DT1, "");
+            String filtered_sort = sharedPreferences.getString(Config.FILTERED_SORT, "");
+
+            swipeRefreshLayout.setRefreshing(true);
+            TasksFilter tf = new TasksFilter();
+            tf.filterTasks(this, filtered_performer, filtered_object, filtered_priority, filtered_status, filtered_dt0, filtered_dt1, filtered_sort);
+        }
+        else
+        {
+            swipeRefreshLayout.setRefreshing(true);
+            getJSON();
+        }
+    }
+
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)

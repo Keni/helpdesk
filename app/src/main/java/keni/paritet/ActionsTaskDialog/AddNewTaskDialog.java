@@ -1,6 +1,7 @@
 package keni.paritet.ActionsTaskDialog;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -16,8 +17,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import keni.paritet.Tools.SearchableSpinner;
 import keni.paritet.ActionsTask.Add.NewTaskAdd;
 import keni.paritet.ActionsTask.Date.SetDate;
 import keni.paritet.ActionsTask.Date.SetTime;
@@ -85,7 +85,7 @@ public class AddNewTaskDialog
         if (!performers.get(0).equals(activity.getText(R.string.notSelected)))
             performers.add(0, String.valueOf(activity.getText(R.string.notSelected)));
 
-        ArrayAdapter<String> adapterUsers = new ArrayAdapter<String>(activity, R.layout.spinner_items, performers);
+        ArrayAdapter<String> adapterUsers = new ArrayAdapter<>(activity, R.layout.spinner_items, performers);
         adapterUsers.setDropDownViewResource(R.layout.spinner_dropdown_items);
         final Spinner spinnerPerformers = (Spinner) view.findViewById(R.id.spinnerPerformer);
         spinnerPerformers.setAdapter(adapterUsers);
@@ -115,46 +115,7 @@ public class AddNewTaskDialog
             @Override
             public void onClick(View view)
             {
-                if (!editTextReason.getText().toString().isEmpty() && !inputExpireDate.getText().toString().isEmpty() && !inputExpireTime.getText().toString().isEmpty())
-                {
-                    String deadline = inputExpireDate.getText().toString() + " " + inputExpireTime.getText().toString();
-
-                    Date dateNow = new Date();
-                    Date deadlineDT = new Date();
-                    DateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH);
-                    try
-                    {
-                        deadlineDT = format.parse(deadline);
-                    }
-                    catch (ParseException e)
-                    {
-                        e.printStackTrace();
-                    }
-
-                    if (!dateNow.after(deadlineDT))
-                    {
-                        addTask(activity, editTextReason.getText().toString(), spinnerPriority.getSelectedItemPosition() + 1,
-                              deadline, spinnerPerformers, spinnerObjects);
-
-                        activity.recreate();
-                        dialog.dismiss();
-                    }
-                    else
-                    {
-                        Toast toast = Toast.makeText(activity, R.string.errorTime, Toast.LENGTH_SHORT);
-                        toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
-                        toast.show();
-                    }
-                }
-                else
-                {
-                    if (editTextReason.getText().toString().trim().isEmpty())
-                        editTextReason.setError(activity.getText(R.string.errorEmptyField));
-                    if (inputExpireDate.getText().toString().trim().isEmpty())
-                        inputExpireDate.setError(activity.getText(R.string.errorEmptyField));
-                    if (inputExpireTime.getText().toString().trim().isEmpty())
-                        inputExpireTime.setError(activity.getText(R.string.errorEmptyField));
-                }
+                checkFormAndAdd(activity, dialog, editTextReason, inputExpireDate, inputExpireTime, spinnerPriority, spinnerPerformers, spinnerObjects);
             }
         });
 
@@ -164,12 +125,55 @@ public class AddNewTaskDialog
             @Override
             public void onClick(View view)
             {
-                addTask(activity, editTextReason.getText().toString(), spinnerPriority.getSelectedItemPosition() + 1,
-                        inputExpireDate.getText().toString() + " " + inputExpireTime.getText().toString(), spinnerPerformers, spinnerObjects);
-
-                dialog.dismiss();
+                checkFormAndAdd(activity, dialog, editTextReason, inputExpireDate, inputExpireTime, spinnerPriority, spinnerPerformers, spinnerObjects);
             }
         });
+
+    }
+
+    private void checkFormAndAdd(Activity activity, Dialog dialog, EditText editTextReason,
+                                 TextView inputExpireDate, TextView inputExpireTime, Spinner spinnerPriority, Spinner spinnerPerformers, Spinner spinnerObjects)
+    {
+        if (!editTextReason.getText().toString().isEmpty() && !inputExpireDate.getText().toString().isEmpty() && !inputExpireTime.getText().toString().isEmpty())
+        {
+            String deadline = inputExpireDate.getText().toString() + " " + inputExpireTime.getText().toString();
+
+            Date dateNow = new Date();
+            Date deadlineDT = new Date();
+            DateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH);
+            try
+            {
+                deadlineDT = format.parse(deadline);
+            }
+            catch (ParseException e)
+            {
+                e.printStackTrace();
+            }
+
+            if (!dateNow.after(deadlineDT))
+            {
+                addTask(activity, editTextReason.getText().toString(), spinnerPriority.getSelectedItemPosition() + 1,
+                        deadline, spinnerPerformers, spinnerObjects);
+
+                activity.recreate();
+                dialog.dismiss();
+            }
+            else
+            {
+                Toast toast = Toast.makeText(activity, R.string.errorTime, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+                toast.show();
+            }
+        }
+        else
+        {
+            if (editTextReason.getText().toString().trim().isEmpty())
+                editTextReason.setError(activity.getText(R.string.errorEmptyField));
+            if (inputExpireDate.getText().toString().trim().isEmpty())
+                inputExpireDate.setError(activity.getText(R.string.errorEmptyField));
+            if (inputExpireTime.getText().toString().trim().isEmpty())
+                inputExpireTime.setError(activity.getText(R.string.errorEmptyField));
+        }
 
     }
 
@@ -178,7 +182,7 @@ public class AddNewTaskDialog
         if (list.get(0).equals(activity.getText(R.string.all)))
             list.remove(0);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity, R.layout.spinner_items, list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(activity, R.layout.spinner_items, list);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_items);
 
         return adapter;

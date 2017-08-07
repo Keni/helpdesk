@@ -23,12 +23,17 @@ import keni.paritet.R;
 
 public class TransferDialog
 {
-    public void transferDialog(final Activity activity, final String app_id, final String performer_id)
+    public void transferDialog(final Activity activity, final String app_id, final String performer_id, final String status)
     {
         final AlertDialog.Builder dialogTransfer = new AlertDialog.Builder(activity);
         LinearLayout view = (LinearLayout) activity.getLayoutInflater().inflate(R.layout.dialog_transfer_layout, null);
 
         final EditText inputComment = (EditText) view.findViewById(R.id.editTextTransferReason);
+
+        if (status.equals("новое"))
+            inputComment.setVisibility(View.GONE);
+        else
+            inputComment.setVisibility(View.VISIBLE);
 
         ArrayList<String> data = new ArrayList<>();
         for (int i = 0; i < Config.users.size(); i++)
@@ -36,7 +41,7 @@ public class TransferDialog
             data.add(Config.users.get(i).get(Config.TAG_USER_FULL_NAME));
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity, R.layout.spinner_items, data);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(activity, R.layout.spinner_items, data);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_items);
         final Spinner spinnerUsers = (Spinner) view.findViewById(R.id.spinnerTransfer);
         spinnerUsers.setAdapter(adapter);
@@ -62,7 +67,7 @@ public class TransferDialog
             @Override
             public void onClick(View view)
             {
-                if (!inputComment.getText().toString().trim().isEmpty())
+                if (!inputComment.getText().toString().trim().isEmpty() || !inputComment.isShown())
                 {
                     String comment = inputComment.getText().toString();
                     String to_user_id = performer_id;

@@ -57,7 +57,7 @@ public class TasksFilter
                 loading.dismiss();
 
                 JSONObject jsonObject;
-                final ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+                final ArrayList<HashMap<String, String>> list = new ArrayList<>();
 
                 try
                 {
@@ -136,6 +136,8 @@ public class TasksFilter
                     };
 
                     AllTasksFragment.list_all_tasks.setAdapter(adapter);
+
+                    AllTasksFragment.swipeRefreshLayout.setRefreshing(false);
 
                 }
                 catch (JSONException | ParseException e)

@@ -71,7 +71,8 @@
     <string name="hintSelectTime">и время</string>
     <string name="hintComment">Комментарий…</string>
     <string name="menu">Меню</string>
-    <string name="statusNew"> Новая  </string>
+    <string name="statusNew">\u0020 Новая \u0020</string>
+    <string name="statusInWork">\u0020 В работе \u0020</string>
     <string name="deadLine">Крайний срок</string>
     <string name="priority">Приоритет</string>
     <string name="status">Статус</string>
@@ -95,6 +96,7 @@
     <string name="saveReport">Сохранить</string>
     <string name="push">Уведомления</string>
     <string name="errorNetwork">Ошибка сети</string>
+    <string name="filterClear">Фильтр очищен</string>
 
     <string-array name="sort">
         <item>Дата изменения</item>

@@ -8,4 +8,6 @@
     <color name="colorBackgroundTask">#F8F8FF</color>
     <color name="colorLogin">#3498db</color>
     <color name="colorMenuText">#545454</color>
+    <color name="colorStatusInWork">#FF6600</color>
+    <color name="colorWhite">#FFFFFF</color>
 </resources>

@@ -80,31 +80,41 @@ public class Config
     public static final String REPORT_TO_USER_ID = "to_user_id";
     public static final String REPORT_STATUS = "report_status";
 
+    public static final String SHARED_PREF_FILTER = "filtered";
+    public static final String FILTERED = "filtered";
+    public static final String FILTERED_PERFORMER = "performer_id";
+    public static final String FILTERED_PRIORITY = "priority";
+    public static final String FILTERED_STATUS = "status";
+    public static final String FILTERED_OBJECT = "object_id";
+    public static final String FILTERED_DT0 = "dt0";
+    public static final String FILTERED_DT1 = "dt1";
+    public static final String FILTERED_SORT = "sort";
+
     public static final String TAG_USER_ID = "user_id";
     public static final String TAG_USER = "user";
     public static final String TAG_USER_FULL_NAME = "full_name";
     public static final String TAG_USER_AVATAR = "avatar";
-    public static final ArrayList<HashMap<String, String>> users = new ArrayList<HashMap<String, String>>();
+    public static final ArrayList<HashMap<String, String>> users = new ArrayList<>();
     public static final ArrayList<String> performers = new ArrayList<>();
 
     public static final String TAG_PRIORITY_ID = "priority_id";
     public static final String TAG_PRIORITY_NAME = "priority_name";
-    public static final ArrayList<HashMap<String, String>> priorityList = new ArrayList<HashMap<String, String>>();
+    public static final ArrayList<HashMap<String, String>> priorityList = new ArrayList<>();
     public static final ArrayList<String> priority = new ArrayList<>();
 
     public static final String TAG_STATUS_ID = "status_id";
     public static final String TAG_STATUS_NAME = "status_name";
-    public static final ArrayList<HashMap<String, String>> statusList = new ArrayList<HashMap<String, String>>();
+    public static final ArrayList<HashMap<String, String>> statusList = new ArrayList<>();
     public static final ArrayList<String> status = new ArrayList<>();
 
     public static final String TAG_OBJECT_ID = "object_id";
     public static final String TAG_OBJECT_NAME = "object_name";
-    public static final ArrayList<HashMap<String, String>> objectsList = new ArrayList<HashMap<String, String>>();
+    public static final ArrayList<HashMap<String, String>> objectsList = new ArrayList<>();
     public static final ArrayList<String> objects = new ArrayList<>();
 
     public static final String TAG_SOLUTION_ID = "sid";
     public static final String TAG_SOLUTION_NAME = "solution";
-    public static final ArrayList<HashMap<String, String>> solution = new ArrayList<HashMap<String, String>>();
+    public static final ArrayList<HashMap<String, String>> solution = new ArrayList<>();
 
     public static final String IN_WORK_STATUS = "3";
     public static final String ACCEPT_STATUS = "5";

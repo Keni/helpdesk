@@ -70,7 +70,7 @@ public class EditReportDialog
             performers.add(Config.users.get(i).get(Config.TAG_USER));
 
         // Инициализируем адаптер и сам спиннер для списка исполнителей
-        ArrayAdapter<String> adapterUsers = new ArrayAdapter<String>(activity, R.layout.spinner_items, performers);
+        ArrayAdapter<String> adapterUsers = new ArrayAdapter<>(activity, R.layout.spinner_items, performers);
         adapterUsers.setDropDownViewResource(R.layout.spinner_dropdown_items);
         final Spinner spinnerPerformers = (Spinner) view.findViewById(R.id.spinnerPerformer);
         spinnerPerformers.setAdapter(adapterUsers);
@@ -86,7 +86,7 @@ public class EditReportDialog
             solution.add(Config.solution.get(i).get(Config.TAG_SOLUTION_NAME));
 
         // Инициализируем адаптер и сам спиннер для списка типа работ
-        ArrayAdapter<String> adapterSpinner = new ArrayAdapter<String>(activity, R.layout.spinner_items, solution);
+        ArrayAdapter<String> adapterSpinner = new ArrayAdapter<>(activity, R.layout.spinner_items, solution);
         adapterSpinner.setDropDownViewResource(R.layout.spinner_dropdown_items);
         final Spinner spinnerSolution = (Spinner) view.findViewById(R.id.spinnerSolution);
         spinnerSolution.setAdapter(adapterSpinner);
@@ -202,7 +202,7 @@ public class EditReportDialog
             e.printStackTrace();
         }
 
-        if (startDT.before(endDT))
+        if (startDT.before(endDT) || endDate.equals(" "))
         {
             String performer = null;
             String solution = null;
@@ -226,7 +226,7 @@ public class EditReportDialog
         }
         else
         {
-            Toast toast = Toast.makeText(activity, R.string.errorTime, Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(activity, R.string.errorTimeReport, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
             toast.show();
         }

@@ -8,11 +8,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnMultiChoiceClickListener;
+import android.support.v7.widget.AppCompatSpinner;
 import android.util.AttributeSet;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -20,10 +22,10 @@ import java.util.List;
 
 import keni.paritet.R;
 
-public class MultiSelectionSpinner extends Spinner implements
+public class MultiSelectionSpinner extends AppCompatSpinner implements
         OnMultiChoiceClickListener {
 
-    public interface OnMultipleItemsSelectedListener{
+    private interface OnMultipleItemsSelectedListener{
         void selectedIndices(List<Integer> indices);
         void selectedStrings(List<String> strings);
     }
@@ -167,6 +169,25 @@ public class MultiSelectionSpinner extends Spinner implements
         simple_adapter.add(buildSelectedItemString());
     }
 
+    public void setSelectionInt(List<Integer> selected)
+    {
+        for (int i = 0; i < mSelection.length; i++) {
+            mSelection[i] = false;
+            mSelectionAtStart[i] = false;
+        }
+        for (int index : selected) {
+            if (index >= 0 && index < mSelection.length) {
+                mSelection[index] = true;
+                mSelectionAtStart[index] = true;
+            } else {
+                throw new IllegalArgumentException("");
+            }
+        }
+        simple_adapter.clear();
+        simple_adapter.add(buildSelectedItemString());
+    }
+
+
     public HashMap<Integer, String> getSelectedMap()
     {
         HashMap<Integer, String> selection = new HashMap<>();
@@ -175,6 +196,18 @@ public class MultiSelectionSpinner extends Spinner implements
             if (mSelection[i])
                 selection.put(i + 1, _items[i]);
 
+        return selection;
+    }
+
+    public List<Integer> getSelectedInt()
+    {
+        List<Integer> selection = new ArrayList<>();
+        for (int i = 0; i < _items.length; ++i) {
+            if (mSelection[i])
+            {
+                selection.add(i);
+            }
+        }
         return selection;
     }
 
@@ -187,6 +220,7 @@ public class MultiSelectionSpinner extends Spinner implements
         }
         return selection;
     }
+
 
     private String buildSelectedItemString() {
         StringBuilder sb = new StringBuilder();

@@ -59,6 +59,7 @@ public class TaskInfoActivity extends AppCompatActivity
     private String JSON_STRING;
     private String app_id;
     private String performer_id;
+    private String status;
     private int solution_img = android.R.color.transparent;
 
     private TextView textViewObj;
@@ -157,7 +158,7 @@ public class TaskInfoActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 TransferDialog td = new TransferDialog();
-                td.transferDialog(TaskInfoActivity.this, app_id, performer_id);
+                td.transferDialog(TaskInfoActivity.this, app_id, performer_id, status);
             }
         });
 
@@ -182,7 +183,7 @@ public class TaskInfoActivity extends AppCompatActivity
             String create_dt = jo_app.getString(Config.TASK_CREATE_DATE);
             String expire_dt = jo_app.getString(Config.TASK_EXPIRE_DATE);
             String reason = jo_app.getString(Config.TASK_REASON);
-            String status = jo_app.getString(Config.TASK_STATUS);
+            status = jo_app.getString(Config.TASK_STATUS);
 
             if (status.equalsIgnoreCase(getResources().getString(R.string.finish)) || status.equalsIgnoreCase(getResources().getString(R.string.accept)))
                 imageButtonRenewTask.setVisibility(View.VISIBLE);
@@ -454,6 +455,7 @@ public class TaskInfoActivity extends AppCompatActivity
 
 
     }
+
 
     public void getJSON()
     {

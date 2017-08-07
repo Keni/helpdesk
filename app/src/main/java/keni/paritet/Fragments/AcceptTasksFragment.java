@@ -51,6 +51,7 @@ public class AcceptTasksFragment extends android.support.v4.app.Fragment impleme
     public void onActivityCreated(Bundle savedInstanceState)
     {
         super.onActivityCreated(savedInstanceState);
+        getActivity().setTitle(R.string.confirmationTasks);
 
         list_accept_tasks = (ListView) getActivity().findViewById(R.id.listview);
         list_accept_tasks.setOnItemClickListener(this);
@@ -86,7 +87,7 @@ public class AcceptTasksFragment extends android.support.v4.app.Fragment impleme
     private void showInfoTask()
     {
         JSONObject jsonObject;
-        ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> list = new ArrayList<>();
 
         try
         {

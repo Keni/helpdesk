@@ -56,6 +56,7 @@ public class MyTasksFragment extends android.support.v4.app.Fragment implements 
     {
         super.onActivityCreated(savedInstanceState);
 
+
         list_my_tasks = (ListView) getActivity().findViewById(R.id.listview);
         list_my_tasks.setOnItemClickListener(this);
 
@@ -83,7 +84,7 @@ public class MyTasksFragment extends android.support.v4.app.Fragment implements 
     private void showInfoTask()
     {
         JSONObject jsonObject;
-        final ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+        final ArrayList<HashMap<String, String>> list = new ArrayList<>();
 
         try
         {

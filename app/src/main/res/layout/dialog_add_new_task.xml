@@ -28,7 +28,7 @@
                 android:layout_gravity="left"
                 android:id="@+id/textViewObj" />
 
-            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+            <keni.paritet.Tools.SearchableSpinner
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"

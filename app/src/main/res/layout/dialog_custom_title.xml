@@ -24,16 +24,16 @@
 
         <TextView
             android:id="@+id/textViewTitle"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <ImageButton
             android:id="@+id/imageButtonSave"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:background="@android:color/white"
+            android:background="@color/colorWhite"
             android:contentDescription="@string/saveReport"
             app:srcCompat="@drawable/ic_save" />
 
