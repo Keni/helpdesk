@@ -168,7 +168,7 @@ public class TaskInfoActivity extends AppCompatActivity
     private void showInfoReport()
     {
         JSONObject jsonObject;
-        final ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+        final ArrayList<HashMap<String, Object>> list = new ArrayList<>();
 
         try
         {
